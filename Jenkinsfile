@@ -9,7 +9,10 @@ pipeline {
     }
     stage('Debug Branch') {
       steps {
-        sh "echo Branch name is ${env.BRANCH_NAME}"
+        script {
+          env.BRANCH_NAME = env.BRANCH_NAME ?: 'dev' // Default to dev if unset
+          sh "echo Branch name is ${env.BRANCH_NAME}"
+        }
       }
     }
     stage('Build & Tag') {
