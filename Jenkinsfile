@@ -7,6 +7,11 @@ pipeline {
     stage('Checkout') {
       steps { checkout scm }
     }
+    stage('Debug Branch') {
+      steps {
+        sh "echo Branch name is ${env.BRANCH_NAME}"
+      }
+    }
     stage('Build & Tag') {
       steps {
         script {
