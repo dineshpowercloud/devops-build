@@ -32,7 +32,6 @@ pipeline {
         anyOf { branch 'dev'; branch 'master' }
       }
       steps {
-        // Use the ec2-ssh credential to connect to AWS EC2
         script {
           def targetTag = (env.BRANCH_NAME == 'master') ? 'prod' : 'dev'
           sshagent (credentials: ['ec2-ssh']) {
