@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    image: ${IMAGE_NAME:-dineshpowercloud/devops-app}:latest
+    ports:
+      - "80:80"
+    restart: unless-stopped
